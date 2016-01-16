@@ -1,4 +1,5 @@
 var gulp    = require('gulp');
+var gutil = require("gulp-util");
 var sync    = require('run-sequence');
 var browser = require('browser-sync');
 var webpack = require('webpack-stream');
@@ -23,13 +24,11 @@ gulp.task('todo', function() {
 });
 
 gulp.task('build', ['todo'], function() {
-  //TODO
-  /*
-  fill this task out to take in entry file
-  and build using the webpack plugin.
-  the plugin takes the webpack.config as an arg.
-  be sure to stream the result to the destination path
-   */
+ // run webpack
+ //
+  return gulp.src(paths.entry)
+  .pipe( webpack( require('./webpack.config')))
+  .pipe(gulp.dest(paths.dest));
 });
 
 gulp.task('serve', function() {
