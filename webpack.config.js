@@ -15,7 +15,8 @@ module.exports = {
     loaders: [
       { test: /\.html$/, loader: 'raw' },
       //loaders read right to left
-      { test: /\.styl$/, loader: 'css!style!stylus' },
+      { test: /\.styl$/, loader: 'style!css!stylus' },
+      { test: /\.css/, loader: 'style!css' },
       //loader for .js files transfroming from ES2015 to ES5
       { test: /\.js$/, loader:'babel?stage=1', excludes: [/node_modules/]}
     ]
