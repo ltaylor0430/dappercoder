@@ -9,7 +9,7 @@
  */
 
 import 'normalize.css';
-import './app.styl';
+import {appDirective} from './app-directive';
 
 //the angular libs are just common js
 ///and therefore we can assume they were
@@ -26,7 +26,7 @@ import _ from 'lodash';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 import {home} from './components/home/home';
-
+import {blog} from './components/blog/blog';
 angular.module('app',[
     uiRouter,
     ngAnimate,
@@ -35,6 +35,7 @@ angular.module('app',[
   // all angular modules have a name
   // property who's value is the name you set the
   // module to be
-  home.name
-  ]);
+  home.name,
+  blog.name
+  ]).directive('app', appDirective);
 
