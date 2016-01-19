@@ -1,5 +1,5 @@
 @import '../styles'
-@import url(http://fonts.googleapis.com/css?family=Lato:400,300,100,500,700);
+@import url('http://fonts.googleapis.com/css?family=Pacifico|Lato|Roboto:400,300,100,500,700');
 //import noto sans
 
 
@@ -8,7 +8,7 @@ body
   height 100%
 
 body
-  font-family 'Lato', sans-serif
+  font-family 'Roboto', sans-serif
   font-weight 400
   width 100%
   height 100%
@@ -29,6 +29,7 @@ a
     height navbar-height
     background-color primary-color
     makeShadow(2)
+    z-index max-z
     position fixed
     min-width 100%
     padding 15px
@@ -36,63 +37,90 @@ a
       span(1/8)
       color white
       font-size 1.8rem
+      font-family 'Pacifico', cursive
+
       cursor pointer
     .links
       span(2/8, 5/8, 2)
       *
         font-size 1.3rem
+        margin-left 10px
   main
     padding-top navbar-height
 
-  section.container
-    +widerthan(600px)
-      width 1200px
-      margin-left auto
-      margin-right auto
-  section.container
-    display -webkit-flex
-    display flex
-    -webkit-flex-flow row wrap
-    flex-flow row wrap
+.button
+  outline none
+  border none
+  border-radius 2px
+  background-color primary-color
+  color white
+  text-transform uppercase
+  text-align center
+  min-width 88px
+  min-height 36px
+  overflow hidden
+  user-select none
+  vertical-align middle
+  position relative
+  padding 0px 6px
+  white-space nowrap
+  cursor pointer
+  font-weight 500
+  user-select none
+  font-size 14px
+  line-height 30px
+  &[disabled]
+  &.disabled
+  :disabled
+    background-color white !important//shade(primary-color, 20%)
+    color text-disabled-color
+    box-shadow none !important
+  &.accent
+    background-color accent-color
+  &.fab
+    width 56px
+    min-width 0px
+    background-clip padding-box
+    height 56px
+    line-height 56px
+    z-index 20
+    border-radius 50%
 
-    .c1, .c2, .c3, .c4, .c5
-      width 100%
+  &:active
+  &:focus
+    border none
+    outline none
 
-    .c2, .c3, .c4, .c5
-      +widerthan(mobile)
-        width 50%
-    .c1
-      +widerthan(tablet)
-        width 60%
-    .c2
-      +widerthan(tablet)
-        width 40%
-    .c3, .c4, .c5
-      +widerthan(tablet)
-        width 33.33%
-    p
-      font-size 1em
-      line-height 1.421em
-      color rgba(51, 51, 51, 0.80)
-      margin 0px 0px 1.421em 0px
+  &.raised
+  &.fab
+    makeShadow(1)
+    transition all .3s ease
 
-    p.intro
-      font-size 1.368em
-      text-align center
-      line-height 1.5em
+    &:active
+      makeShadow(3)
+main
+  position relative
+  min-height 400px
 
-    .c1
-      background-color red
-    .c2
-      background-color blue
-    .c3
-      background-color orange
+  [ui-view].ng-enter
+    opacity 0
+    transform scale3d(0.5,0.5,0.5)
 
-    section
-      box-sizing border-box
-      min-height 150px
-      min-width 150px
+  [ui-view].ng-enter-active
+    opacity 1
+    transform scale3d(1,1,1)
 
-navbar
-  background navbar
+  [ui-view].ng-leave
+    opacity 1
+    transform translate3d(0,0,0)
 
+  [ui-view].ng-leave-active
+    opacity 0
+    transform translate3d(100px, 0, 0)
+
+  [ui-view].ng-enter
+  [ui-view].ng-leave
+    position absolute
+    left 0
+    right 0
+    transition all .5s ease-in-out

@@ -26,7 +26,8 @@ import _ from 'lodash';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 import {home} from './components/home/home';
-import {blog} from './components/blog/blog';
+import {showcase} from './components/showcase/showcase';
+
 angular.module('app',[
     uiRouter,
     ngAnimate,
@@ -36,6 +37,6 @@ angular.module('app',[
   // property who's value is the name you set the
   // module to be
   home.name,
-  blog.name
+  showcase.name
   ]).directive('app', appDirective);
 

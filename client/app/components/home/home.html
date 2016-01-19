@@ -1,8 +1,16 @@
+<div>
 <section class="home">
   <div class="hero">
     <div class="title">
-      <h1>{{ vm.title }}</h1>
-      <h3>We blog about the angulars</h3>
+      <h3>{{ vm.title }}</h3>
+      <p class="intro">{{vm.subtitle}}</p>
     </div>
+    <div class="portrait">
+      <img ng-src="{{vm.portrait}}"/>
   </div>
 </section>
+<section class="showcase">
+  <h3>Applications Built with ES6/2015</h3>
+  <showcase></showcase>
+</section>
+</div>

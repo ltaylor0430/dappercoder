@@ -2,18 +2,47 @@
 
 .home
   .hero
-    height 600px
-    background-color alpha(black, 40%)
-    *
-      color white
-    .title
-      center(600px)
+    center(960px)
+    padding 10px
+
+
+    .title, .portrait
+      width 100%
+      margin auto
       text-align center
+    .title
+      +widerthan(tablet)
+        width 70%
       h1
         font-size 3rem
       h3
         font-size 2rem
+        margin 0
       *
         font-weight 300
+    p
+      font-size 1rem
+      line-height 1.421em
+      color text-color
+      margin 0px 0px 1.421em 0px
+
+    p.intro
+      font-size 1.368em
+      text-align center
+      line-height 1.5em
+
+    .portrait
+      +widerthan(tablet)
+        width 30%
+      img
+        width 150px
+        height 150px
+
+
   .items
     center(600px)
+.showcase
+  center(960px)
+  h3
+    border-bottom 2px solid purple
+    padding tb-padding lr-padding

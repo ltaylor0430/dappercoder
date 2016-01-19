@@ -1,6 +1,6 @@
 import angular from 'angular';
 import {homeDirective} from './home-directive';
-
+import {showcaseDirective} from '../showcase/showcase-directive';
 // placing an export in front of ar var is the same
 // as exporting the var at the end of the file
 // using export {varname}
@@ -10,7 +10,7 @@ export const home = angular.module('home', [])
 
   $stateProvider.state('home', {
     url: '/',
-    template: '<home></home>'
+    template: `<home></home>`
   });
 })
 .directive('home', homeDirective);
