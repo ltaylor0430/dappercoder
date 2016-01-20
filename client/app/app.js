@@ -9,6 +9,7 @@
  */
 
 import 'normalize.css';
+import 'font-awesome/css/font-awesome.css';
 import {appDirective} from './app-directive';
 
 //the angular libs are just common js

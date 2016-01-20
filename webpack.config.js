@@ -20,10 +20,8 @@ module.exports = {
       //loader for .js files transfroming from ES2015 to ES5
       { test: /\.js$/, loader:'babel?stage=1', excludes: [/node_modules/]},
       //fonts
-      { test: /\.(woff|woff2)$/,  loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-      { test: /\.ttf$/,    loader: "file-loader" },
-      { test: /\.eot$/,    loader: "file-loader" },
-      { test: /\.svg$/,    loader: "file-loader" },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
       //images
       { test: /\.(png|jpg|jpeg)$/, loader: "file" }
     ]

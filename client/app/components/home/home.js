@@ -1,6 +1,7 @@
 import angular from 'angular';
 import {homeDirective} from './home-directive';
 import {showcaseDirective} from '../showcase/showcase-directive';
+
 // placing an export in front of ar var is the same
 // as exporting the var at the end of the file
 // using export {varname}

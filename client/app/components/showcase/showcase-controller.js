@@ -1,32 +1,34 @@
+// create our controller using the
+// highly controversial class
 import _ from 'lodash';
-
-export class ShowcaseController {
+class ShowcaseController {
   // bind to this and not $scope
   // because of controllerAs.
-  // note do not use arrow functions in constructor functions
   constructor() {
-    this.title = 'Welcome to the blog!';
-    this.posts = _.times(6, i => {
+    this.expanded = -1;
+    this.posts = _.times(50, i => {
       return {title: `I am item ${i}`,
-              author: 'Moses'
+              author: 'Moses',
+              info: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Laborum voluptatum eveniet totam ad iusto aliquid animi veniam earum,
+              nemo beatae, et aut ratione sed eligendi optio,
+              quos debitis minus doloremque!`
              }
     });
-
-    this.appBrowser;
-    this.selected = -1;
-    this.selectApp = function(post,$index) {
-      //collapse any open app vies
-      console.log(this.selected);
-      this.selected = post;
-      let elem = angular.element( document.querySelector( '#appbrowser' ));
-      console.log(elem);
-      console.log(post);
-
-      console.log(this.selected);
+    this.toggleExpand = function(index) {
+      this.expanded = index;
+      console.log('expanding =' + this.expanded);
     }
-    this.isOpen = function(item){
-      return this.selected === item;
+    this.toggleClose = function(index) {
+      this.expanded = -1;
+      console.log('expanding =' + this.expanded);
+    }
+    this.isSelected = function($index) {
+      console.log($index);
+      console.log($index === this.expanded);
+        return this.expanded === $index;
     }
   }
 }
-
+// could also just export the class up top as well
+export {ShowcaseController};

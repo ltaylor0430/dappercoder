@@ -1,40 +1,226 @@
 @import '../../../styles'
+/* font-awesome */
+.fa
+  font-size 30px
+  color white
+.myapp
+   display block
+  margin 0
+  position relative
 
-.blog
-  center(960px)
-  .header
-    *
-      text-align center
-      font-size 2.5rem
-      font-weight 300
-  .posts
-    margin-top 40px
-    .post
-      background-color white
-      margin-bottom tb-margin
-      position relative
-      +mobile()
-        col(1,3,1)
-      makeShadow(1)
-      col(1/3, 0, 3)
-      .post-img
-        overflow hidden
-        height 200px
-        img
-          width 100%
-          transition transform .5s ease-in-out
-          &:hover
-            transform scale(1.1)
-      .post-title
-        padding tb-padding lr-padding
-        background-color bg-color
-      .post-author
-        padding tb-padding lr-padding
-        *
-          font-weight 200
-      .action
-        position absolute
-        right 10px
-        bottom 14px
-.pointer
-  cursor:pointer
+  img
+    padding 2px
+    width 100%
+
+.components
+  text-align center
+  overflow hidden
+  center(960)
+
+  &__strip
+    will-change width, left, z-index, height
+    position relative
+    min-height 243px
+    width 20%
+    margin-bottom 10px
+    color white
+    overflow hidden
+    cursor pointer
+    easeOut()
+    col(1/4,0,4,0)
+    +mobile()
+
+      /*stack()*/ /* stack vertically on mobile */
+      margin-bottom 0
+    +tablet()
+      col(1/2,0,2,2)
+
+    &:nth-child(5n+1)
+      .strip__content
+        background color1
+        transform translate3d(-100%, 0, 0)
+        animation-name strip1
+        animation-delay 0.1s
+
+    &:nth-child(5n+2)
+      .strip__content
+        background color2
+        transform translate3d(0, 100%, 0)
+        animation-name strip2
+        animation-delay 0.2s
+
+    &:nth-child(5n+3)
+      .strip__content
+        background color3
+        transform translate3d(0, -100%, 0)
+        animation-name strip3
+        animation-delay 0.3s
+
+    &:nth-child(5n+4)
+      .strip__content
+        background color4
+        transform translate3d(0, 100%, 0)
+        animation-name strip4
+        animation-delay 0.4s
+
+    &:nth-child(5n+5)
+      .strip__content
+        background color5
+        transform translate3d(100%, 0, 0)
+        animation-name strip5
+        animation-delay 0.5s
+
+  .strip__content
+    animation-duration 1s
+    animation-timing-function cubic-bezier(0.23, 1, 0.32, 1)
+    animation-fill-mode both
+    display flex
+    align-items center
+    justify-content center
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    text-decoration none
+
+    &:hover
+      &:before
+        transform skew(-30deg) scale(3) translate(0, 0)
+        opacity 0.1
+
+    &:before
+      content ""
+      position absolute
+      z-index 1
+      top 0
+      left 0
+      width 100%
+      height 100%
+      background white
+      opacity 0.05
+      transform-origin center center
+      transform skew(-30deg) scaleY(1) translate(0, 0)
+      easeOut()
+
+  .strip__inner-text
+    will-change transform, opacity
+    position absolute
+    z-index 5
+    top 50%
+    left 50%
+    width 70%
+    transform translate(-50%,-50%) scale(0.5)
+    opacity 0
+    easeOut()
+
+  &__strip--expanded
+    width 100%
+    position fixed
+    margin-top navbar-height
+    top 0
+    left 0
+    height 100%
+    opacity 1
+    z-index 3
+    cursor default
+
+    .strip__content
+      &:hover
+        &:before
+          transform skew(-30deg) scale(1) translate(0, 0)
+          opacity 0.05
+
+    .hideme
+    .strip__title
+      opacity 0
+
+
+    .strip__inner-text
+      opacity 1
+      transform translate(-50%, -50%) scale(1)
+
+
+
+
+.strip__title
+  display block
+  margin 0
+  position relative
+  z-index 2
+  width 100%
+  font-size 3.5vw
+  color white
+  easeOut()
+
+  +below(768px)
+    font-size 28px
+
+
+
+.strip__close
+  position fixed
+  right 3vw
+  top 75px
+  opacity 0
+  z-index 100
+  easeOut()
+  cursor pointer
+  transition-delay 0.5s
+
+  &--show
+    opacity 1
+
+
+
+@keyframes strip1
+  0%
+    transform translate3d(-100%, 0, 0)
+
+
+  100%
+    transform translate3d(0, 0, 0)
+
+
+
+@keyframes strip2
+  0%
+    transform translate3d(0, 100%, 0)
+
+
+  100%
+    transform translate3d(0, 0, 0)
+
+
+
+@keyframes strip3
+  0%
+    transform translate3d(0, -100%, 0)
+
+
+  100%
+    transform translate3d(0, 0, 0)
+
+
+
+@keyframes strip4
+  0%
+    transform translate3d(0, 100%, 0)
+
+
+  100%
+    transform translate3d(0, 0, 0)
+
+
+
+@keyframes strip5
+  0%
+    transform translate3d(100%, 0, 0)
+
+
+  100%
+    transform translate3d(0, 0, 0)
+
+
+
+

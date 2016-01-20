@@ -1,26 +1,23 @@
-<section class="blog">
-  <div class="header">
-    <h1>{{ vm.message }}</h1>
-  </div>
-  <div ng-show="vm.selected !=-1">
-            <div id="appbrowser" class="post">overlay: tweet, share, pin</div>
- </div>
-  <div class="posts">
-    <div ng-repeat="app in vm.posts" class="post">
-    <a class="pointer" ng-click="vm.selectApp(app,$index)">
-        <div class="post-img">
+<section class="components">
+ <article ng-click="vm.toggleExpand($index)" ng-class="{'components__strip--expanded': vm.isSelected($index)}" ng-repeat="app in vm.posts" class="components__strip">
+      <div class="strip__content">
+     <div class="hideme myapp">
+        <div class="myapp-img">
           <img src="//placekitten.com/g/400/200" alt="kitten">
         </div>
-        <div class="post-title">
+        <div class="myapp-title">
           <span>{{ app.title }}</span>
         </div>
-        <div class="post-author">
+        <div class="myapp-author">
           <span>{{ app.author }}</span>
         </div>
-     </a>
+        </div>
+      <div ng-class="{delayText: vm.isSelected($index)}" class="strip__inner-text">
+        <h2>Ettrics</h2>
+        <p>{{app.info}}</p>
+        </div>
+      </div>
+</article>
+<i class="fa fa-close strip__close" ng-click="vm.expanded =-1" ng-class="{'strip__close--show': vm.expanded!== -1}"></i>
 
-    </div>
-
-
-  </div>
 </section>
